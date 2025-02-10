@@ -41,7 +41,7 @@ app.post('/create-memorial', async (req, res) => {
     const memorialId = result.rows[0].id; // ✅ Get the generated ID
 
     // Generate QR Code storing only the URL
-    const qrData = `http://192.168.56.1:5000/memorial/${memorialId}`;
+    const qrData = `https://memorializeai.onrender.com/memorial/${memorialId}`;
     const qrCodeURL = await QRCode.toDataURL(qrData); 
 
     // Update the QR Code URL in the database
@@ -106,7 +106,7 @@ app.put('/update-memorial/:id', async (req, res) => {
 
   try {
     // ✅ Ensure QR Code URL remains based on ID
-    const qrCodeURL = `http://192.168.56.1:5000/memorial/${id}`;
+    const qrCodeURL = `https://memorializeai.onrender.com/memorial/${id}`;
 
     const result = await pool.query(
       `UPDATE memorials 
